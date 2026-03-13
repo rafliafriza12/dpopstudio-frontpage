@@ -6,6 +6,7 @@ import GetStarted from "../organisms/home/GetStarted";
 import BlogArticles from "../organisms/home/BlogArticles";
 import WhatWeDeliver from "../organisms/home/WhatWeDeliver";
 import WeAreHere from "../organisms/home/WeAreHere";
+import CTA from "../organisms/CTA";
 export function LandingPageTemplate() {
   return (
     <>
@@ -18,6 +19,8 @@ export function LandingPageTemplate() {
       <BlogArticles />
       <WeAreHere order="first" />
       <WeAreHere order="middle" />
+      <WeAreHere order="last" />
+      <CTA />
     </>
   );
 }

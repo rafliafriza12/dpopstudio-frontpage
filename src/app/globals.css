@@ -132,3 +132,80 @@ button {
     transform: translateY(0px);
   }
 }
+
+/* Blog Content Styles (dangerouslySetInnerHTML) */
+.blog-content h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 140%;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 140%;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content ul li {
+  margin-bottom: 0.35rem;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content ol li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content ol li p {
+  margin-bottom: 0.25rem;
+}
+
+.blog-content blockquote {
+  border-left: 3px solid #1e1e1e;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.blog-content a {
+  color: #1e1e1e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-content a:hover {
+  opacity: 0.7;
+}
+
+.blog-content img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 1.5rem 0;
+}
+
+.blog-content strong {
+  font-weight: 700;
+}
+
+.blog-content em {
+  font-style: italic;
+}

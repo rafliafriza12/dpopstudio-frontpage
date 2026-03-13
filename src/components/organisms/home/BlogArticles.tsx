@@ -29,7 +29,7 @@ const BlogArticles: React.FC = () => {
         <div className="flex flex-col ipad-vertical:flex-row ipad-vertical:items-start ipad-vertical:justify-between gap-6">
           {/* Left - Title */}
           <Heading2 className="font-instrument-serif ">
-            Blogs &<br />
+            Blogs &<br className="hidden ipad-vertical:block" />
             Articles
           </Heading2>
 

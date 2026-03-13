@@ -23,7 +23,7 @@ const OurProduct: React.FC = () => {
     <section className="w-full bg-[#FDFCFC]">
       <Container className="w-full flex flex-col gap-10 ipad-vertical:gap-14">
         {/* Header */}
-        <div className="flex flex-col ipad-vertical:flex-row ipad-vertical:items-end ipad-vertical:justify-between gap-6 ipad-vertical:gap-0">
+        <div className="flex flex-col ipad-horizontal:flex-row ipad-horizontal:items-end ipad-horizontal:justify-between gap-6 ipad-horizontal:gap-0">
           {/* Left - Title & Description */}
           <div className="flex flex-col gap-4 ">
             <Heading2 className="font-instrument-serif">Our Product</Heading2>
@@ -47,7 +47,7 @@ const OurProduct: React.FC = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ipad-vertical:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 ipad-horizontal:grid-cols-3 gap-6 ipad-vertical:gap-8">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

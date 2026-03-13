@@ -19,7 +19,7 @@ const GetStarted: React.FC = () => {
         </div>
 
         {/* Process Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 ipad-vertical:gap-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 ipad-horizontal:grid-cols-3 gap-5 ipad-vertical:gap-6 w-full">
           {processSteps.map((step) => (
             <ProcessCard key={step.id} step={step} />
           ))}

@@ -31,7 +31,7 @@ const SocialIconCard: React.FC<SocialIconCardProps> = ({ platform }) => {
   return (
     <div
       ref={cardRef}
-      className="relative w-[239.52px] h-[239.52px] "
+      className="relative w-[140px] h-[140px] ipad-vertical:w-[180px] ipad-vertical:h-[180px] lg:w-[239.52px] lg:h-[239.52px] "
       style={{ cursor: isHovered ? "none" : "pointer" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -53,7 +53,7 @@ const SocialIconCard: React.FC<SocialIconCardProps> = ({ platform }) => {
             : "0 1px 4px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="w-[143.71px] h-[143.71px] rounded-full flex items-center justify-center transition-colors duration-300 relative">
+        <div className="w-[80px] h-[80px] ipad-vertical:w-[110px] ipad-vertical:h-[110px] lg:w-[143.71px] lg:h-[143.71px] rounded-full flex items-center justify-center transition-colors duration-300 relative">
           <Image
             src={platform.icon}
             alt={platform.name}

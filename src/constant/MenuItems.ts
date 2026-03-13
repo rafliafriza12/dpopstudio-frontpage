@@ -14,14 +14,14 @@ export const menuItems: IMenuItem[] = [
   },
   {
     name: "Product",
-    link: "/terms-of-services",
+    link: "/",
   },
   {
     name: "Blog",
-    link: "/privacy-policy",
+    link: "/blogs",
   },
   {
     name: "Contact",
-    link: "/data-policy",
+    link: "/",
   },
 ];

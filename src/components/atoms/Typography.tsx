@@ -122,7 +122,7 @@ export function BodyMediumMedium({
   className = "",
 }: TypographyProps) {
   return (
-    <p className={`text-base font-medium leading-[160%]  ${className}`}>
+    <p className={`text-base font-medium leading-[140%]  ${className}`}>
       {children}
     </p>
   );
@@ -130,9 +130,7 @@ export function BodyMediumMedium({
 
 export function BodyLargeMedium({ children, className = "" }: TypographyProps) {
   return (
-    <p
-      className={`text-lg uppercase tracking-[2px] leading-[155%] font-medium ${className}`}
-    >
+    <p className={`text-lg  leading-[155%] font-medium ${className}`}>
       {children}
     </p>
   );
