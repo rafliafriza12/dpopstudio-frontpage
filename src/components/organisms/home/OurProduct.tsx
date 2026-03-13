@@ -10,14 +10,32 @@ import {
   productList,
 } from "@/constant/our-product";
 import { BodyMediumRegular, Heading2 } from "@/components/atoms/Typography";
+import { usePublishedProducts } from "@/lib/api/hooks";
 
 const OurProduct: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory>("All");
+  const [activeCategory, setActiveCategory] = useState<ProductCategory | "All">(
+    "All",
+  );
+  const { data: apiProducts } = usePublishedProducts();
+
+  // Use API data if available, otherwise fallback to static data
+  const products = apiProducts?.length
+    ? apiProducts.map((p, i) => ({
+        id: i + 1,
+        title: p.title,
+        description: p.description,
+        category: p.category as ProductCategory,
+        originalPrice: p.originalPrice,
+        price: p.price,
+        screens: p.screens,
+        imgUrl: p.imgUrl,
+      }))
+    : productList;
 
   const filteredProducts =
     activeCategory === "All"
-      ? productList
-      : productList.filter((product) => product.category === activeCategory);
+      ? products
+      : products.filter((product) => product.category === activeCategory);
 
   return (
     <section className="w-full bg-[#FDFCFC]">

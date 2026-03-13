@@ -14,7 +14,7 @@ export function MainLayout({ children }: MainLayoutProps) {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main
-        className={`flex-1 select-none lg:select-text ${pathname === "/" ? "" : "overflow-hidden"}`}
+        className={`flex-1 select-none lg:select-text ${pathname === "/" ? "overflow-hidden" : "overflow-hidden"}`}
       >
         {children}
       </main>

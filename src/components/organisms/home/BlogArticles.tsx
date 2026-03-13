@@ -3,22 +3,43 @@
 import { useState } from "react";
 import { Container } from "@/components/atoms/Container";
 import BlogCard from "@/components/molecules/home/BlogCard";
-import { blogList } from "@/constant/blog";
+import { blogList, IBlogItem } from "@/constant/blog";
 import { BodyMediumRegular, Heading2 } from "@/components/atoms/Typography";
 import Link from "next/link";
+import { usePublishedBlogs } from "@/lib/api/hooks";
 
 const INITIAL_COUNT = 4;
 const LOAD_MORE_COUNT = 4;
 
 const BlogArticles: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const { data: apiBlogs } = usePublishedBlogs();
 
-  const visibleBlogs = blogList.slice(0, visibleCount);
-  const hasMore = visibleCount < blogList.length;
+  // Use API data if available, otherwise fallback to static data
+  const allBlogs: IBlogItem[] = apiBlogs?.length
+    ? apiBlogs.map((b, i) => ({
+        id: i + 1,
+        slug: b.slug,
+        title: b.title,
+        excerpt: b.excerpt,
+        category: b.category,
+        date: new Date(b.createdAt).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        }),
+        readTime: b.readTime,
+        imgUrl: b.imgUrl,
+        content: b.content,
+      }))
+    : blogList;
+
+  const visibleBlogs = allBlogs.slice(0, visibleCount);
+  const hasMore = visibleCount < allBlogs.length;
 
   const handleLoadMore = () => {
     setVisibleCount((prev) =>
-      Math.min(prev + LOAD_MORE_COUNT, blogList.length),
+      Math.min(prev + LOAD_MORE_COUNT, allBlogs.length),
     );
   };
 
