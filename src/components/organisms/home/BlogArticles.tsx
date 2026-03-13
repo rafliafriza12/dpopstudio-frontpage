@@ -40,7 +40,7 @@ const BlogArticles: React.FC = () => {
               and growth.
             </BodyMediumRegular>
             <Link
-              href="/blog"
+              href="/blogs"
               className="inline-block bg-secondary text-primary font-instrument-sans  px-8 py-3 rounded-[10px] hover:opacity-90 transition-opacity duration-200"
             >
               All Blogs

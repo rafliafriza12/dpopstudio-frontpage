@@ -14,19 +14,21 @@ const Footer: React.FC<IFooterProps> = ({ variant = "primary" }) => {
     <footer className="w-full bg-[#F8F7F5] font-poppins">
       <Container className="w-full flex flex-col gap-10 ipad-vertical:gap-14">
         {/* Top Section */}
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col ipad-horizontal:flex-row">
           {/* Left - Logo, Description, Contact */}
-          <div className="flex flex-col gap-6 lg:w-1/2 ">
+          <div className="flex flex-col ipad-vertical:flex-row ipad-horizontal:flex-col gap-6 w-full justify-between ipad-horizontal:w-1/2 ">
             {/* Logo */}
-            <Link href="/">
-              <Logo />
-            </Link>
+            <div className="flex flex-col gap-6">
+              <Link href="/">
+                <Logo />
+              </Link>
 
-            {/* Description */}
-            <Heading5 className="font-instrument-serif max-w-[242px]">
-              We are your digital design partner in crafting digital products to
-              impact the future, today.
-            </Heading5>
+              {/* Description */}
+              <Heading5 className="font-instrument-serif max-w-[242px]">
+                We are your digital design partner in crafting digital products
+                to impact the future, today.
+              </Heading5>
+            </div>
 
             {/* Contact */}
             <div className="flex flex-col gap-3">
@@ -47,7 +49,7 @@ const Footer: React.FC<IFooterProps> = ({ variant = "primary" }) => {
           </div>
 
           {/* Right - Footer Columns */}
-          <div className="w-full mt-8 lg:mt-0 lg:w-1/2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6 flex-1">
+          <div className="w-full mt-8 lg:mt-0 lg:w-1/2 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-8 lg:gap-6 flex-1">
             {footerColumns.map((column) => (
               <div key={column.title} className="flex flex-col gap-4">
                 <BodyMediumMedium className="font-instrument-sans ">

@@ -19,7 +19,7 @@ const CTA: React.FC = () => {
           className="object-contain"
         />
       </div>
-      <Container className="flex flex-col items-center justify-start gap-[71px] min-h-[60vh] lg:min-h-screen">
+      <Container className="flex flex-col items-center justify-start gap-[71px] min-h-[700px] h-[60vh] lg:min-h-screen">
         <div className="flex flex-col items-center gap-1.5 max-w-[595px]">
           <BodyLargeMedium className="font-instrument-sans text-[#747BF5]">
             Have any Question?
