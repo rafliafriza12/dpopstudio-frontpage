@@ -28,7 +28,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <NextTopLoader
-          color="#6C5CE7"
+          color="#c269da"
           initialPosition={0.08}
           crawlSpeed={200}
           height={3}

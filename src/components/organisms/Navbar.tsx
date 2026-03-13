@@ -147,10 +147,15 @@ export function Navbar() {
             {/* Desktop Menu */}
             <div className="hidden ipad-horizontal:flex items-center gap-7.5 font-instrument-sans text-base text-black">
               {menuItems.map((item: IMenuItem, i: number) => {
+                const isActive =
+                  pathname === item.link ||
+                  (item.link !== "/" && pathname.includes(item.link));
                 return (
                   <Link
                     key={i}
-                    className="hover:opacity-70 transition-opacity"
+                    className={` hover:underline ${
+                      isActive ? "text-[#c269da] font-medium underline" : ""
+                    }`}
                     href={item.link}
                   >
                     {item.name}
@@ -246,7 +251,8 @@ export function Navbar() {
             <div className="flex flex-col gap-1">
               {menuItems.map((item: IMenuItem, i: number) => {
                 const isActive =
-                  pathname.includes(item.link) && item.link !== "/";
+                  pathname === item.link ||
+                  (item.link !== "/" && pathname.startsWith(item.link));
 
                 // If item has children, render accordion
                 if (item.child && item.child.length > 0) {
@@ -256,9 +262,9 @@ export function Navbar() {
                       <div className="flex items-center gap-2 hover:bg-secondary/5 rounded-md">
                         <Link
                           href={item.link}
-                          className={`flex-1 hover:text-charcoal-green duration-300 transition-all text-xs sm:text-lg py-3 px-4 ${
+                          className={`flex-1 hover:text-[#a0ac67] duration-300 transition-all text-xs sm:text-lg py-3 px-4 ${
                             isActive
-                              ? "text-charcoal-green font-medium"
+                              ? "text-[#a0ac67] font-medium"
                               : "text-secondary font-normal"
                           }`}
                           onClick={closeMobileMenu}
@@ -267,8 +273,8 @@ export function Navbar() {
                         </Link>
                         <button
                           onClick={() => toggleAccordion(i)}
-                          className={`hover:text-charcoal-green duration-300 transition-all p-3 pr-4 ${
-                            isActive ? "text-charcoal-green" : "text-secondary"
+                          className={`hover:text-[#a0ac67] duration-300 transition-all p-3 pr-4 ${
+                            isActive ? "text-[#a0ac67]" : "text-secondary"
                           }`}
                           aria-label={`Toggle ${item.name} submenu`}
                         >
@@ -320,9 +326,9 @@ export function Navbar() {
                   <Link
                     key={i}
                     href={item.link}
-                    className={`hover:text-charcoal-green hover:bg-secondary/5 duration-300 transition-all text-base sm:text-lg py-3 px-4 rounded-md ${
+                    className={`hover:text-[#a0ac67] hover:bg-secondary/5 duration-300 transition-all text-base sm:text-lg py-3 px-4 rounded-md ${
                       isActive
-                        ? "text-charcoal-green font-medium"
+                        ? "text-[#a0ac67] font-medium"
                         : "text-secondary font-normal"
                     }`}
                     onClick={closeMobileMenu}
