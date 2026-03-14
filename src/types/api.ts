@@ -1,4 +1,9 @@
-export type ProductCategory = "Dashboard" | "SaaS" | "Mobile";
+export type ProductCategory =
+  | "Dashboard"
+  | "Website"
+  | "SaaS"
+  | "Mobile"
+  | "Pitch Deck";
 
 export interface IProduct {
   _id: string;

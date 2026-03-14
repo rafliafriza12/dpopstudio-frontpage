@@ -10,11 +10,11 @@ export interface IMenuItem {
 export const menuItems: IMenuItem[] = [
   {
     name: "Service",
-    link: "#",
+    link: "/services",
   },
   {
     name: "Product",
-    link: "#",
+    link: "/products",
   },
   {
     name: "Blog",
@@ -22,6 +22,6 @@ export const menuItems: IMenuItem[] = [
   },
   {
     name: "Contact",
-    link: "#",
+    link: "/contact",
   },
 ];

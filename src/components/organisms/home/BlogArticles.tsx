@@ -13,7 +13,7 @@ const LOAD_MORE_COUNT = 4;
 
 const BlogArticles: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const { data: apiBlogs } = usePublishedBlogs();
+  const { data: apiBlogs, isLoading } = usePublishedBlogs();
 
   // Use API data if available, otherwise fallback to static data
   const allBlogs: IBlogItem[] = apiBlogs?.length
@@ -70,14 +70,65 @@ const BlogArticles: React.FC = () => {
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ipad-vertical:gap-x-8 ipad-vertical:gap-y-12">
-          {visibleBlogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
-          ))}
-        </div>
+        {isLoading ? (
+          /* Loading Skeleton */
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ipad-vertical:gap-x-8 ipad-vertical:gap-y-12">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex flex-col gap-4 animate-pulse">
+                <div className="w-full aspect-4/3 rounded-2xl bg-[#E8E8E8]" />
+                <div className="flex items-center gap-2">
+                  <div className="w-20 h-4 rounded bg-[#E8E8E8]" />
+                  <div className="w-2 h-2 rounded-full bg-[#E8E8E8]" />
+                  <div className="w-16 h-4 rounded bg-[#E8E8E8]" />
+                </div>
+                <div className="w-3/4 h-5 rounded bg-[#E8E8E8]" />
+                <div className="space-y-2">
+                  <div className="w-full h-4 rounded bg-[#E8E8E8]" />
+                  <div className="w-2/3 h-4 rounded bg-[#E8E8E8]" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : visibleBlogs.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ipad-vertical:gap-x-8 ipad-vertical:gap-y-12">
+            {visibleBlogs.map((blog) => (
+              <BlogCard key={blog.id} blog={blog} />
+            ))}
+          </div>
+        ) : (
+          /* Empty State */
+          <div className="flex flex-col items-center justify-center py-20 gap-5">
+            <div className="w-16 h-16 rounded-full bg-[#F5F5F5] flex items-center justify-center">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"
+                  stroke="#ABABAB"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M7 7H12M7 11H17M7 15H14"
+                  stroke="#ABABAB"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <p className="font-instrument-sans text-base text-[#ABABAB]">
+              No articles published yet
+            </p>
+          </div>
+        )}
 
         {/* Load More */}
-        {hasMore && (
+        {!isLoading && visibleBlogs.length > 0 && hasMore && (
           <div className="flex justify-center">
             <button
               onClick={handleLoadMore}

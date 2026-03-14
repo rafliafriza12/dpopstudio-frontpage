@@ -16,7 +16,7 @@ const OurProduct: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | "All">(
     "All",
   );
-  const { data: apiProducts } = usePublishedProducts();
+  const { data: apiProducts, isLoading } = usePublishedProducts();
 
   // Use API data if available, otherwise fallback to static data
   const products = apiProducts?.length
@@ -65,11 +65,68 @@ const OurProduct: React.FC = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 ipad-horizontal:grid-cols-3 gap-6 ipad-vertical:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {isLoading ? (
+          /* Loading Skeleton */
+          <div className="grid grid-cols-1 sm:grid-cols-2 ipad-horizontal:grid-cols-3 gap-6 ipad-vertical:gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="flex flex-col gap-4 animate-pulse">
+                <div className="w-full aspect-4/3 rounded-t-2xl bg-[#E8E8E8]" />
+                <div className="flex flex-col gap-3 p-[18px]">
+                  <div className="w-20 h-6 rounded-full bg-[#E8E8E8]" />
+                  <div className="w-3/4 h-5 rounded bg-[#E8E8E8]" />
+                  <div className="w-full h-4 rounded bg-[#E8E8E8]" />
+                  <div className="flex justify-between mt-2">
+                    <div className="w-16 h-5 rounded bg-[#E8E8E8]" />
+                    <div className="w-24 h-4 rounded bg-[#E8E8E8]" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 ipad-horizontal:grid-cols-3 gap-6 ipad-vertical:gap-8">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          /* Empty State */
+          <div className="flex flex-col items-center justify-center py-20 gap-5">
+            <div className="w-16 h-16 rounded-full bg-[#F5F5F5] flex items-center justify-center">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 7H4C3.45 7 3 7.45 3 8V19C3 19.55 3.45 20 4 20H20C20.55 20 21 19.55 21 19V8C21 7.45 20.55 7 20 7Z"
+                  stroke="#ABABAB"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M16 7V5C16 4.45 15.55 4 15 4H9C8.45 4 8 4.45 8 5V7"
+                  stroke="#ABABAB"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 12V16M10 14H14"
+                  stroke="#ABABAB"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <p className="font-instrument-sans text-base text-[#ABABAB]">
+              No products available yet
+            </p>
+          </div>
+        )}
       </Container>
     </section>
   );

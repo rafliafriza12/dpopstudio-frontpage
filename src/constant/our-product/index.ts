@@ -1,4 +1,10 @@
-export type ProductCategory = "All" | "Dashboard" | "SaaS" | "Mobile";
+export type ProductCategory =
+  | "All"
+  | "Dashboard"
+  | "Website"
+  | "SaaS"
+  | "Mobile"
+  | "Pitch Deck";
 
 export interface IProductItem {
   id: number;
@@ -14,8 +20,10 @@ export interface IProductItem {
 export const productCategories: ProductCategory[] = [
   "All",
   "Dashboard",
+  "Website",
   "SaaS",
   "Mobile",
+  "Pitch Deck",
 ];
 
 export const productList: IProductItem[] = [
