@@ -6,6 +6,7 @@ import { MainLayout } from "@/components/templates/MainLayout";
 import { blogList } from "@/constant/blog";
 import { notFound } from "next/navigation";
 import { useBlogBySlug } from "@/lib/api/hooks";
+import BlogDetailSkeleton from "@/components/organisms/blogs/BlogDetailSkeleton";
 
 interface BlogDetailProps {
   params: Promise<{ slug: string }>;
@@ -47,9 +48,7 @@ export default function BlogDetail({ params }: BlogDetailProps) {
   if (isLoading) {
     return (
       <MainLayout>
-        <div className="flex items-center justify-center min-h-screen">
-          <p className="text-lg">Loading...</p>
-        </div>
+        <BlogDetailSkeleton />
       </MainLayout>
     );
   }
